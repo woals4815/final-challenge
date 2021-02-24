@@ -1,0 +1,13 @@
+extends layouts/layout
+include mixins/videoPlayer
+
+block content 
+    +videoPlayer({
+        fileUrl: video.fileUrl
+    })
+    h4.video__title=video.title
+    h6.video__description=video.description
+    if video.views === 1
+        h6.video__views 1 view
+    else
+        h6.video__views #{video.views} views

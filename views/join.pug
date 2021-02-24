@@ -1,0 +1,10 @@
+extends layouts/layout
+
+block content 
+    .form-container 
+        form(action=routes.join, method="post")
+            input(type="text", name="nickName", placeholder="Nick-name", required=true)
+            input(type="email", name="email", placeholder="Email", required=true )
+            input(type="password", name="aPassword", placeholder="Password", required=true)
+            input(type="password", name="bPassword", placeholder="Password Confirm", required=true)
+            input(type="submit", value="Join 👊") 
