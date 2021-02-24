@@ -12,10 +12,11 @@ const VIDEO_EDIT = "/:id/edit";
 const VIDEO_DELETE = "/:id/delete";
 
 //User
-const USER = "/user";
+const USER = "/users";
 const USER_DETAIL = "/:id";
 const EDIT_PROFILE = "/edit-profile";
 const ME = "/me";
+const LOGOUT = "/logout";
 
 const routes = {
   home: HOME,
@@ -49,19 +50,20 @@ const routes = {
   },
   userDetail: (id) => {
     if (id) {
-      return `/user/${id}`;
+      return `/users/${id}`;
     } else {
       return USER_DETAIL;
     }
   },
   editProfile: (id) => {
     if (id) {
-      return `/user/${id}/edit-profile`;
+      return `/users/${id}/edit-profile`;
     } else {
       return EDIT_PROFILE;
     }
   },
   me: ME,
+  logout: LOGOUT,
 };
 
 export default routes;

@@ -10,6 +10,7 @@ import videoRouter from "./routers/videoRouter";
 import routes from "./routes";
 import "./passport";
 import session from "express-session";
+import userRouter from "./routers/userRouter";
 
 dotenv.config();
 
@@ -40,5 +41,6 @@ app.set("view engine", "pug");
 app.use(localMiddleware);
 app.use(routes.home, globalRouter);
 app.use(routes.videos, videoRouter);
+app.use(routes.user, userRouter);
 
 export default app;

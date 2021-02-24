@@ -4,7 +4,7 @@ import routes from "../routes";
 export const localMiddleware = (req, res, next) => {
   res.locals.siteName = "Youtube";
   res.locals.routes = routes;
-  res.locals.loggedUser = true;
+  res.locals.loggedUser = req.user || null;
   next();
 };
 const multerVideo = multer({ dest: "uploads/" });

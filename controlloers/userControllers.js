@@ -27,7 +27,7 @@ export const getJoin = (req, res) => {
 };
 export const postJoin = async (req, res, next) => {
   const {
-    body: { nickname, email, aPassword, bPassword },
+    body: { nickName, email, aPassword, bPassword },
   } = req;
   if (aPassword !== bPassword) {
     res.status(400);
@@ -36,7 +36,7 @@ export const postJoin = async (req, res, next) => {
     try {
       const user = await User({
         email,
-        nickname,
+        nickName,
       });
       console.log(user);
       User.register(user, aPassword);
@@ -50,8 +50,12 @@ export const postJoin = async (req, res, next) => {
   }
 };
 
+export const logout = (req, res) => {
+  req.logout();
+  res.redirect(routes.home);
+};
+
 export const userDetail = (req, res) => {
-  const {
-    params: { id },
-  } = req;
+  console.log(req.user);
+  res.render("userDetail");
 };

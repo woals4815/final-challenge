@@ -15,8 +15,8 @@ header.header
                         a(href=routes.login) Login
                 else
                     li 
-                        a(href=`/videos${routes.uplaod}`) Upload 
+                        a(href=`/videos${routes.upload}`) Upload 
                     li
                         a(href=routes.logout) Log out
                     li 
-                        a(href=routes.me) Profile
+                        a(href=routes.userDetail(loggedUser.id)) Profile
