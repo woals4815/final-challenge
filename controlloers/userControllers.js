@@ -6,7 +6,7 @@ import Video from "../models/Video";
 export const home = async (req, res) => {
   try {
     const videos = await Video.find();
-    console.log(videos);
+    console.log(req.user);
     res.render("home", { videos });
   } catch (error) {
     console.log(error);

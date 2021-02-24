@@ -11,3 +11,5 @@ block content
         h6.video__views 1 view
     else
         h6.video__views #{video.views} views
+    if video.creator._id.toString() === loggedUser.id
+        a(href=routes.videoEdit(video.id)) Edit Video ✍️
