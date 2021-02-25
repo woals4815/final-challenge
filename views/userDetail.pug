@@ -1,7 +1,10 @@
 extends layouts/layout
 
-block content 
-    h2=loggedUser.nickName
-    h4=loggedUser.email
-    .edit-profile__btn 
-        a(href=routes.editProfile(loggedUser.id)) Edit Profile ✍️
+block content
+    .user-profile
+        .user-nickName
+            span#nickName Nick Name: #{loggedUser.nickName}
+        .user-email
+            span#email Email: #{loggedUser.email}
+        .edit-profile__btn 
+            a(href=routes.editProfile(loggedUser.id)) Edit Profile ✍️

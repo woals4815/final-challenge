@@ -6,17 +6,18 @@ import alert from "alert";
 
 export const home = async (req, res) => {
   try {
-    const videos = await Video.find();
+    let videos = [];
+    videos = await Video.find();
     console.log(req.user);
-    res.render("home", { videos });
+    res.render("home", { videos, pageName: "Home" });
   } catch (error) {
     console.log(error);
-    res.render("home", { pageTitle: "Home", videos: [] });
+    res.render("home", { pageName: "Home", videos: [] });
   }
 };
 
 export const getLogin = (req, res) => {
-  res.render("login");
+  res.render("login", { pageName: "Login" });
 };
 export const postLogin = passport.authenticate("local", {
   failureRedirect: routes.login,
@@ -24,7 +25,7 @@ export const postLogin = passport.authenticate("local", {
 });
 
 export const getJoin = (req, res) => {
-  res.render("join");
+  res.render("join", { pageName: "Join Now" });
 };
 export const postJoin = async (req, res, next) => {
   const {
@@ -57,11 +58,11 @@ export const logout = (req, res) => {
 };
 
 export const userDetail = (req, res) => {
-  res.render("userDetail");
+  res.render("userDetail", { pageName: "My Profile" });
 };
 
 export const getEditProfile = (req, res) => {
-  res.render("editProfile");
+  res.render("editProfile", { pageName: "Edit Profile" });
 };
 export const postEditProfile = async (req, res) => {
   const {

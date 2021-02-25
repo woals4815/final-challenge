@@ -2,7 +2,7 @@ import Video from "../models/Video";
 import routes from "../routes";
 
 export const getUpload = (req, res) => {
-  res.render("upload");
+  res.render("upload", { pageName: "Upload Video" });
 };
 export const postUpload = async (req, res) => {
   const {
@@ -29,7 +29,7 @@ export const videoDetail = async (req, res) => {
     .populate("creator")
     .populate("comments");
   console.log(video._id);
-  res.render("videoDetail", { video });
+  res.render("videoDetail", { video, pageName: "Video Detail" });
 };
 
 export const videoDelete = async (req, res) => {
@@ -55,7 +55,7 @@ export const getVideoEdit = async (req, res) => {
   } = req;
   try {
     const video = await Video.findById(id);
-    res.render("videoEdit", { video });
+    res.render("videoEdit", { video, pageName: "Edit Video" });
   } catch (error) {
     console.log(error);
     res.redirect(videoDetail(id));
@@ -79,4 +79,20 @@ export const postVideoEdit = async (req, res) => {
     res.redirect(routes.videoEdit(id));
     console.log(error);
   }
+};
+
+export const searchVideo = async (req, res) => {
+  const {
+    query: { term },
+  } = req;
+  let videos = [];
+  try {
+    videos = await Video.find({
+      title: { $regex: term, $options: "i" },
+    });
+  } catch (error) {
+    console.log(error);
+    res.redirect(routes.home);
+  }
+  res.render("search", { videos, pageName: `searching By ${term}` });
 };
