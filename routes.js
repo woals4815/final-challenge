@@ -14,7 +14,8 @@ const VIDEO_DELETE = "/:id/delete";
 //User
 const USER = "/users";
 const USER_DETAIL = "/:id";
-const EDIT_PROFILE = "/edit-profile";
+//뒤에 :id를 붙여야 router에서는 id를 안 받으니까 이해하고 GET 할 수 있다. 삽질 오지게 했다;;
+const EDIT_PROFILE = "/:id/edit-profile";
 const ME = "/me";
 const LOGOUT = "/logout";
 

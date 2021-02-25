@@ -2,6 +2,7 @@ import passport from "passport";
 import User from "../models/User";
 import routes from "../routes";
 import Video from "../models/Video";
+import alert from "alert";
 
 export const home = async (req, res) => {
   try {
@@ -56,6 +57,27 @@ export const logout = (req, res) => {
 };
 
 export const userDetail = (req, res) => {
-  console.log(req.user);
   res.render("userDetail");
+};
+
+export const getEditProfile = (req, res) => {
+  res.render("editProfile");
+};
+export const postEditProfile = async (req, res) => {
+  const {
+    body: { email, nickName },
+    params: { id },
+  } = req;
+  try {
+    const user = await User.findById(id);
+    if (user.id !== req.user.id) {
+      res.redirect(routes.editProfile(id));
+    }
+    await User.findByIdAndUpdate(id, { email, nickName });
+    alert("Update Success👌");
+    res.redirect(userDetail(id));
+  } catch (error) {
+    console.log(error);
+    res.redirect(routes.editProfile(id));
+  }
 };

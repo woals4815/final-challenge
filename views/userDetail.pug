@@ -3,3 +3,5 @@ extends layouts/layout
 block content 
     h2=loggedUser.nickName
     h4=loggedUser.email
+    .edit-profile__btn 
+        a(href=routes.editProfile(loggedUser.id)) Edit Profile ✍️

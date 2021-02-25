@@ -39,8 +39,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.set("view engine", "pug");
 app.use(localMiddleware);
+app.use(routes.user, userRouter);
 app.use(routes.home, globalRouter);
 app.use(routes.videos, videoRouter);
-app.use(routes.user, userRouter);
 
 export default app;
