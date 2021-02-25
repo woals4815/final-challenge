@@ -5,6 +5,7 @@ export const getUpload = (req, res) => {
   res.render("upload", { pageName: "Upload Video" });
 };
 export const postUpload = async (req, res) => {
+  console.log(req);
   const {
     body: { title, description },
     file: { location },
