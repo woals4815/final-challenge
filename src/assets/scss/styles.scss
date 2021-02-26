@@ -1,0 +1,15 @@
+@import "config/reset.scss";
+@import "main.scss";
+@import "components/videoPlayer.scss";
+
+//component
+@import "components/header.scss";
+
+//pages
+@import "pages/userDetail.scss";
+@import "pages/home.scss";
+@import "pages/upload.scss";
+@import "pages/videoDetail.scss";
+@import "pages/login.scss";
+@import "pages/join.scss";
+@import "pages/editVideo.scss";

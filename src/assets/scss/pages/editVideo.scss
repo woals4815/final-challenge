@@ -1,0 +1,12 @@
+.editVideoPage{
+    .delete__btn{
+        display: flex;
+        justify-content: center;
+        a{
+            background-color: lightblue;
+            padding: 7px;
+            border-radius: 4px;
+            box-shadow: gray 0px 2px 3px;
+        }
+    }
+}

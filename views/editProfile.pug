@@ -1,7 +1,0 @@
-extends layouts/layout
-
-block content
-    form(action=routes.editProfile(loggedUser.id), method="post")
-        input(type="email", value=loggedUser.email, required=true, name="email")
-        input(type="text", value=loggedUser.nickName, required=true, name="nickName")
-        input(type="submit", value="Edit Profile ✍️") 

@@ -1,0 +1,26 @@
+.uploadPage{
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        .record-container{
+            display: flex;
+            flex-direction: column;
+            button{
+                border: none;
+                background-color: lightblue;
+                border-radius: 3px;
+                width: 70%;
+                box-shadow: gray 0px 1px 3px;
+                padding: 5px;
+                font-weight: 600;
+                color: gray;
+            }
+            align-items: center;
+        }
+        form{
+            margin-top: 10px;
+        }
+    }
+}
