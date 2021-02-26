@@ -11,6 +11,7 @@ import routes from "./routes";
 import "./passport";
 import session from "express-session";
 import userRouter from "./routers/userRouter";
+import apiRouter from "./routers/apiRouter";
 
 dotenv.config();
 
@@ -42,5 +43,5 @@ app.use(localMiddleware);
 app.use(routes.user, userRouter);
 app.use(routes.home, globalRouter);
 app.use(routes.videos, videoRouter);
-
+app.use(routes.api, apiRouter);
 export default app;

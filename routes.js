@@ -18,6 +18,10 @@ const USER_DETAIL = "/:id";
 const EDIT_PROFILE = "/:id/edit-profile";
 const ME = "/me";
 const LOGOUT = "/logout";
+//API
+const API = "/api";
+const REGISTER_VIEW = "/:id/view";
+const ADD_COMMENT = "/:id/comment";
 
 const routes = {
   home: HOME,
@@ -65,6 +69,9 @@ const routes = {
   },
   me: ME,
   logout: LOGOUT,
+  api: API,
+  registerView: REGISTER_VIEW,
+  addComment: ADD_COMMENT,
 };
 
 export default routes;

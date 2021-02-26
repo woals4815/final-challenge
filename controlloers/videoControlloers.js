@@ -1,4 +1,5 @@
 import Video from "../models/Video";
+import Comment from "../models/Comment";
 import routes from "../routes";
 
 export const getUpload = (req, res) => {
@@ -29,6 +30,7 @@ export const videoDetail = async (req, res) => {
   const video = await Video.findById(id)
     .populate("creator")
     .populate("comments");
+  console.log(video);
   res.render("videoDetail", { video, pageName: "Video Detail" });
 };
 
@@ -94,4 +96,44 @@ export const searchVideo = async (req, res) => {
     res.redirect(routes.home);
   }
   res.render("search", { videos, pageName: `searching By ${term}` });
+};
+
+export const registerView = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  try {
+    const video = await Video.findById(id);
+    console.log(video);
+    video.views += 1;
+    video.save();
+    res.status(200);
+  } catch (error) {
+    res.status(400);
+    console.log(error);
+  } finally {
+    res.end();
+  }
+};
+
+export const addComment = async (req, res) => {
+  const {
+    params: { id },
+    body: { comment },
+    user,
+  } = req;
+  try {
+    const video = await Video.findById(id).populate("comments");
+    const newComment = await Comment.create({
+      text: comment,
+      creator: user.id,
+    });
+    video.comments.push(newComment);
+    video.save();
+  } catch (error) {
+    console.log(error);
+    res.status(400);
+  } finally {
+    res.end();
+  }
 };

@@ -18,6 +18,7 @@ module.exports = {
       {
         test: /\.(js)$/,
         use: ["babel-loader"],
+        //videoRecorder에서 async await 사용하기 위해 exclude를 추가했음
         exclude: /node_modules/,
       },
       {
