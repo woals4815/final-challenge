@@ -29,7 +29,6 @@ export const videoDetail = async (req, res) => {
   const video = await Video.findById(id)
     .populate("creator")
     .populate("comments");
-  console.log(video._id);
   res.render("videoDetail", { video, pageName: "Video Detail" });
 };
 
@@ -73,7 +72,6 @@ export const postVideoEdit = async (req, res) => {
       res.redirect(routes.videoDetail(id));
     } else {
       await Video.findByIdAndUpdate(id, { title, description });
-      console.log(video);
       res.redirect(routes.home);
     }
   } catch (error) {
